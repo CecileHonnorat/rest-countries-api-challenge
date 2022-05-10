@@ -19,9 +19,9 @@ export default function Countries() {
 
     useEffect(() => {
         async function loadData() {
-            var rawResponse = await fetch('/countries-list');
+            var rawResponse = await fetch('https://restcountries.com/v2/all');
             var response = await rawResponse.json();
-            setCountriesList(response.countries)
+            setCountriesList(response)
         }
         loadData();
     }, []);
