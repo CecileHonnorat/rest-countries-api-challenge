@@ -16,7 +16,10 @@ export default function Countries() {
     }
 
     const [countriesList, setCountriesList] = useState([]);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [region, setRegion] = useState("");
 
+    // Get countries 
     useEffect(() => {
         async function loadData() {
             var rawResponse = await fetch('https://restcountries.com/v2/all');
@@ -26,7 +29,25 @@ export default function Countries() {
         loadData();
     }, []);
 
-    var countries = countriesList.map(function (country, i) {
+    let filteredCountries = countriesList;
+    if (region === "Africa"){
+       filteredCountries = countriesList.filter(e => e.region ==="Africa")
+    }
+    if (region === "America"){
+        filteredCountries = countriesList.filter(e => e.region ==="America")
+     }
+     if (region === "Asia"){
+        filteredCountries = countriesList.filter(e => e.region ==="Asia")
+     }
+     if (region === "Europe"){
+        filteredCountries = countriesList.filter(e => e.region ==="Europe")
+     }
+     if (region === "Oceania"){
+        filteredCountries = countriesList.filter(e => e.region ==="Oceania")
+     }
+
+    // Display Countries' Info
+    var countries = filteredCountries.map(function (country, i) {
         return (<CountriesCard key={i}
             countryName={country.name}
             countryPopulation={country.population}
@@ -36,6 +57,13 @@ export default function Countries() {
         />)
     })
 
+    // Open dropdown
+    const toggle = () => {
+        setDropdownOpen(!dropdownOpen)
+    }
+ 
+
+    console.log(region)
     return (
         <Container fluid={true} style={background}>
             < Header />
@@ -53,24 +81,24 @@ export default function Countries() {
                     <Col
                         style={{ margin: 25, alignItems: 'flex-end' }}
                     >
-                        <Dropdown toggle={function noRefCheck() { }} >
-                            <DropdownToggle caret>
+                        <Dropdown isOpen={dropdownOpen} toggle={toggle} >
+                            <DropdownToggle caret color='light' style={{border:'1px solid grey'}}>
                                 Filter by Region
                             </DropdownToggle>
                             <DropdownMenu>
-                                <DropdownItem>
+                                <DropdownItem onClick={() => setRegion("Africa")}> 
                                     Africa
                                 </DropdownItem>
-                                <DropdownItem>
+                                <DropdownItem onClick={() => setRegion("America")}>
                                     America
                                 </DropdownItem>
-                                <DropdownItem>
+                                <DropdownItem onClick={() => setRegion("Asia")}>
                                     Asia
                                 </DropdownItem>
-                                <DropdownItem>
+                                <DropdownItem onClick={() => setRegion("Europe")}>
                                     Europe
                                 </DropdownItem>
-                                <DropdownItem>
+                                <DropdownItem onClick={() => setRegion("Oceania")}>
                                     Oceania
                                 </DropdownItem>
                             </DropdownMenu>
