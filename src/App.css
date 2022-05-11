@@ -1,13 +1,19 @@
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&family=Open+Sans&display=swap');
+
 .header{
   display: flex;
   background-color: white;
   color: black;
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+  padding: 0.5rem;
 }
 
 .title{
   margin-left: 50px;
   margin-top: 15px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: "ExtraBold 800";
 }
 .mode {
   width: 100%;
@@ -15,15 +21,69 @@
   justify-content: flex-end;
   margin-right: 50px;
   margin-top: 15px;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
 }
 
 .search{
   display: flex;
   align-items: center;
+  margin: 35px;
+  margin-left: 3.5rem;
+  padding: 0.75rem;
+	box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+	border-radius: 0.3rem;
+  background-color: white;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.filter{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 35px;
+  margin-right: 0.5rem;
+  padding: 0.75rem;
+	box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+	border-radius: 0.3rem;
+  background-color: white;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.backButton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 35px;
+  padding: 0.75rem;
+	box-shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
+	border-radius: 0.3rem;
+  background-color: white;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.content{
+  margin-left: 480;
 }
 
 .CountryInfo{
   display: flex;
   align-items: center;
   justify-content: space-around;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.NotFound{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100vh;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.countryCard{
+  font-family: "Nunito Sans", sans-serif;
+  display: flex;
+  justify-content: space-evenly;
 }

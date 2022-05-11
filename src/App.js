@@ -8,6 +8,7 @@ import {
 
 import Countries from './components/Countries';
 import Country from './components/Country';
+import NotFound from './components/404';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
     <Routes>
       <Route element={<Countries />} path="/" exact />
       <Route element={<Country />} path="/country-info/:name" exact />
+      <Route element={<NotFound/>} path='*' />
     </Routes>
   </Router>
   );

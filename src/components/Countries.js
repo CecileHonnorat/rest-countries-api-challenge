@@ -18,6 +18,7 @@ export default function Countries() {
     const [countriesList, setCountriesList] = useState([]);
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [region, setRegion] = useState("");
+    const [countrySearch, setCountrySearch] = useState('');
 
     // Get countries 
     useEffect(() => {
@@ -29,12 +30,13 @@ export default function Countries() {
         loadData();
     }, []);
 
+    // Filter countries by region
     let filteredCountries = countriesList;
     if (region === "Africa"){
        filteredCountries = countriesList.filter(e => e.region ==="Africa")
     }
     if (region === "America"){
-        filteredCountries = countriesList.filter(e => e.region ==="America")
+        filteredCountries = countriesList.filter(e => e.region ==="Americas")
      }
      if (region === "Asia"){
         filteredCountries = countriesList.filter(e => e.region ==="Asia")
@@ -44,6 +46,9 @@ export default function Countries() {
      }
      if (region === "Oceania"){
         filteredCountries = countriesList.filter(e => e.region ==="Oceania")
+     }
+     if (region === "All"){
+        filteredCountries = countriesList
      }
 
     // Display Countries' Info
@@ -62,27 +67,30 @@ export default function Countries() {
         setDropdownOpen(!dropdownOpen)
     }
  
-
-    console.log(region)
+    console.log(countrySearch)
     return (
         <Container fluid={true} style={background}>
             < Header />
-            <div className='content' fluid >
-                <Row style={{ margin: 25 }}>
+            <div className='content'>
+                <Row style={{ marginTop: 55 }}>
                     <Col className='search' 
                         sm="4"
-                        xs="6">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} style={{ padding: '10', border: '1px solid grey' }} />
+                        xs="10">
+                        <FontAwesomeIcon icon={faMagnifyingGlass} color='grey' />
                         <Input
                             type="search"
                             placeholder='Search for a country...'
+                            onChange={(e) => setCountrySearch(e.target.value)}
+                            value={countrySearch}
+                            style={{border: 'none', outline: 'none', width:'100%'}}
                         />
                     </Col>
-                    <Col
-                        style={{ margin: 25, alignItems: 'flex-end' }}
-                    >
+                    <Col className='filter'
+                    md={{size:2, offset:5}}
+                    sm={{size:2, offset:8}}
+                    xs="7">
                         <Dropdown isOpen={dropdownOpen} toggle={toggle} >
-                            <DropdownToggle caret color='light' style={{border:'1px solid grey'}}>
+                            <DropdownToggle caret color='white' style={{border: 'none', width:'100%'}}>
                                 Filter by Region
                             </DropdownToggle>
                             <DropdownMenu>
@@ -100,6 +108,9 @@ export default function Countries() {
                                 </DropdownItem>
                                 <DropdownItem onClick={() => setRegion("Oceania")}>
                                     Oceania
+                                </DropdownItem>
+                                <DropdownItem onClick={() => setRegion("All")}>
+                                    All
                                 </DropdownItem>
                             </DropdownMenu>
                         </Dropdown>

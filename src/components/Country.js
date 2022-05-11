@@ -4,6 +4,8 @@ import { Button, Container, Col, Row, List } from "reactstrap";
 import { useEffect, useState } from 'react';
 import Header from "./Header";
 import { useParams, useNavigate, Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 export default function Country(props) {
 
@@ -57,49 +59,50 @@ export default function Country(props) {
         displayInfo = (
             <div className='CountryInfo'>
                 <Row>
-                    <Col>
+                    <Col sm="6">
                         <img src={countryInfo.flags.png} alt='flag'></img>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <h2>{countryInfo.name.common}</h2>
+                        <h2 style={{fontWeight:800}}>{countryInfo.name.common}</h2>
                         <List type="unstyled">
                             <li>
-                                <span style={{ fontWeight: 'bold' }}>Native Name : </span> {Object.values(countryInfo.name.nativeName)[0].common}
+                                <span style={{ fontWeight: 600 }}>Native Name : </span> {Object.values(countryInfo.name.nativeName)[0].common}
                             </li>
                             <li>
-                                <span style={{ fontWeight: 'bold' }}>Population :</span>  {countryInfo.population.toLocaleString("en-IN")}
+                                <span style={{ fontWeight: 600 }}>Population :</span>  {countryInfo.population.toLocaleString("en-IN")}
                             </li>
                             <li>
-                                <span style={{ fontWeight: 'bold' }}>Region : </span> {countryInfo.region}
+                                <span style={{ fontWeight: 600 }}>Region : </span> {countryInfo.region}
                             </li>
                             <li>
-                                <span style={{ fontWeight: 'bold' }}>Sub Region : </span> {countryInfo.subregion}
+                                <span style={{ fontWeight: 600 }}>Sub Region : </span> {countryInfo.subregion}
                             </li>
                             <li>
-                                <span style={{ fontWeight: 'bold' }}>Capital :</span>  {countryInfo.capital}
+                                <span style={{ fontWeight: 600 }}>Capital :</span>  {countryInfo.capital}
                             </li>
                         </List>
                     </Col>
                     <Col>
-                        <List>
+                        <List type="unstyled">
                             <li>
-                                <span style={{ fontWeight: 'bold' }}>Top Level Domain : </span> {countryInfo.tld.join(", ")}
+                                <span style={{ fontWeight: 600 }}>Top Level Domain : </span> {countryInfo.tld.join(", ")}
                             </li>
                             <li>
-                                <span style={{ fontWeight: 'bold' }}>Currencies : </span> {Object.values(countryInfo.currencies)[0].name}
+                                <span style={{ fontWeight: 600 }}>Currencies : </span> {Object.values(countryInfo.currencies)[0].name}
                             </li>
                             <li>
-                                <span style={{ fontWeight: 'bold' }}>Languages : </span> {Object.values(countryInfo.languages).join(", ")}
+                                <span style={{ fontWeight: 600 }}>Languages : </span> {Object.values(countryInfo.languages).join(", ")}
                             </li>
                         </List></Col>
                     <Row>
                         <Col>
-                            <span style={{ fontWeight: 'bold' }}>Border Countries : </span>
+                            <span style={{ fontWeight: 600 }}>Border Countries : </span>
                             {borders.map((border, i) => (
                                 <Link to={`/country-info/${border}`} key={border}>
-                                    <Button outline size="sm">
+                                    <Button outline size="sm"
+                                    style={{fontWeight:600, margin:3}}>
                                         {border}
                                     </Button>
                                 </Link>
@@ -118,11 +121,12 @@ export default function Country(props) {
             < Header />
             <div className='content' >
                 <Row style={{ margin: 125 }}>
-                    <Col>
+                    <Col className="backButton" md='2'>
+                        <FontAwesomeIcon icon={faArrowLeft} />
                         <Button
-                            color="dark"
-                            outline
+                            color="white"
                             onClick={routeChange}
+                            style={{border:'none', width:'100%'}}
                         >
                             Back
                         </Button>
