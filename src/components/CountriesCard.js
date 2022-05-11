@@ -10,18 +10,16 @@ export default function CountriesCard(props) {
   var countryRegion = props.countryRegion
   var countryCapital = props.countryCapital
   return (
-    <div className='countryCard'>
-      <Col md='10'>
+      <Col style={{display:'flex', justifyContent:'center'}}>
         <Link to={`/country-info/${countryName}`} key={countryName}
           style={{ color: 'black', textDecoration: "none" }}>
-          <Card style={{ margin: 20 }}
-          >
+          <Card style={{ margin: '0.5rem', width:'80%', display:'flex' }}>
             <CardImg
               alt="country's flag"
               src={countryFlag}
               width='100%'
             />
-            <CardBody style={{ textAlign: 'left', marginInline: 20 }}>
+            <CardBody style={{ textAlign: 'left', marginInline: '0.25rem' }}>
               <CardTitle tag="h3" style={{ marginBottom: 20, marginTop: 20, fontWeight:600 }}>
                 {countryName}
               </CardTitle>
@@ -31,14 +29,12 @@ export default function CountriesCard(props) {
               <CardText style={{ marginBottom: 0 }}>
                 <span style={{ fontWeight: 'bold' }}>Region : </span>{countryRegion}
               </CardText>
-              <CardText style={{ marginBottom: 0 }}>
+              <CardText style={{ marginBottom: '0.75rem' }}>
                 <span style={{ fontWeight: 'bold' }}>Capital :</span> {countryCapital}
               </CardText>
             </CardBody>
           </Card>
         </Link>
       </Col>
-
-    </div>
   )
 }

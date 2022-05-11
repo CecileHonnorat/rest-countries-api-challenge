@@ -51,6 +51,21 @@ export default function Countries() {
         filteredCountries = countriesList
      }
 
+    //Search a country
+    const searchActive = async (e) => {
+        let searchWord = e.target.value.toLowerCase()
+        setCountrySearch(searchWord)
+     }
+
+     if (countrySearch !== ''){
+            filteredCountries = countriesList.filter((country) =>{
+                return country.name.common.includes(countrySearch)
+         })
+     }
+
+console.log(countrySearch)
+console.log(filteredCountries.length)
+
     // Display Countries' Info
     var countries = filteredCountries.map(function (country, i) {
         return (<CountriesCard key={i}
@@ -71,7 +86,6 @@ export default function Countries() {
     return (
         <Container fluid={true} style={background}>
             < Header />
-            <div className='content'>
                 <Row style={{ marginTop: 55 }}>
                     <Col className='search' 
                         sm="4"
@@ -80,7 +94,7 @@ export default function Countries() {
                         <Input
                             type="search"
                             placeholder='Search for a country...'
-                            onChange={(e) => setCountrySearch(e.target.value)}
+                            onChange={searchActive}
                             value={countrySearch}
                             style={{border: 'none', outline: 'none', width:'100%'}}
                         />
@@ -116,10 +130,9 @@ export default function Countries() {
                         </Dropdown>
                     </Col>
                 </Row>
-                <Row xs="1" lg="2" xl="4" style={background}>
+                <Row xs="1" lg="2" xl="4" className='countryCards' style={{margin:'25px'}}>
                     {countries}
                 </Row>
-            </div>
         </Container>
     )
 }

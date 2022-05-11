@@ -12,7 +12,7 @@ export default function Header() {
                 fixed="top"
                 light>
                 <Col className='title'>
-                    <h4 style={{fontWeight:800}}>Where In The World?</h4>
+                    <h4 style={{fontWeight:800}}>Where in the world?</h4>
                 </Col>
                 <Col className="mode">
                     <FontAwesomeIcon

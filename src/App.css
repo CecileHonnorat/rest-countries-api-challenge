@@ -62,14 +62,11 @@
   font-family: "Nunito Sans", sans-serif;
 }
 
-.content{
-  margin-left: 480;
-}
 
 .CountryInfo{
   display: flex;
-  align-items: center;
   justify-content: space-around;
+  align-items: center;
   font-family: "Nunito Sans", sans-serif;
 }
 
@@ -82,8 +79,15 @@
   font-family: "Nunito Sans", sans-serif;
 }
 
-.countryCard{
+.countryCards{
   font-family: "Nunito Sans", sans-serif;
+  width: 100vw;
+}
+
+.listInfo{
   display: flex;
-  justify-content: space-evenly;
+}
+
+.borders{
+  margin-top: 3rem;
 }

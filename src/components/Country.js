@@ -57,16 +57,16 @@ export default function Country(props) {
     let displayInfo;
     if (dataLoaded === true) {
         displayInfo = (
-            <div className='CountryInfo'>
-                <Row>
-                    <Col sm="6">
-                        <img src={countryInfo.flags.png} alt='flag'></img>
+            <div >
+                <Row className='CountryInfo'>
+                    <Col md="6" style={{display:"flex", alignItems:'center', justifyContent:'center'}}>
+                        <img src={countryInfo.flags.png} alt='flag' width="350" ></img>
                     </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <h2 style={{fontWeight:800}}>{countryInfo.name.common}</h2>
-                        <List type="unstyled">
+
+                    <Col md='6'>
+                        <h2 style={{fontWeight:800, marginBottom:25}}>{countryInfo.name.common}</h2>
+                        <div className="listInfo">
+                            <List type="unstyled" style={{marginRight: "10rem"}}>
                             <li>
                                 <span style={{ fontWeight: 600 }}>Native Name : </span> {Object.values(countryInfo.name.nativeName)[0].common}
                             </li>
@@ -83,8 +83,6 @@ export default function Country(props) {
                                 <span style={{ fontWeight: 600 }}>Capital :</span>  {countryInfo.capital}
                             </li>
                         </List>
-                    </Col>
-                    <Col>
                         <List type="unstyled">
                             <li>
                                 <span style={{ fontWeight: 600 }}>Top Level Domain : </span> {countryInfo.tld.join(", ")}
@@ -95,10 +93,10 @@ export default function Country(props) {
                             <li>
                                 <span style={{ fontWeight: 600 }}>Languages : </span> {Object.values(countryInfo.languages).join(", ")}
                             </li>
-                        </List></Col>
-                    <Row>
-                        <Col>
-                            <span style={{ fontWeight: 600 }}>Border Countries : </span>
+                        </List>
+                        </div>
+                        <div className="borders">
+                        <span style={{ fontWeight: 600 }}>Border Countries : </span>
                             {borders.map((border, i) => (
                                 <Link to={`/country-info/${border}`} key={border}>
                                     <Button outline size="sm"
@@ -108,8 +106,8 @@ export default function Country(props) {
                                 </Link>
 
                             ))}
-                        </Col>
-                    </Row>
+                        </div>
+             </Col>
                 </Row>
             </div>
         )
