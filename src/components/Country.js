@@ -71,7 +71,7 @@ export default function Country(props) {
                                 <span style={{ fontWeight: 600 }}>Native Name : </span> {Object.values(countryInfo.name.nativeName)[0].common}
                             </li>
                             <li>
-                                <span style={{ fontWeight: 600 }}>Population :</span>  {countryInfo.population.toLocaleString("en-IN")}
+                                <span style={{ fontWeight: 600 }}>Population :</span>  {countryInfo.population.toLocaleString("en-US")}
                             </li>
                             <li>
                                 <span style={{ fontWeight: 600 }}>Region : </span> {countryInfo.region}

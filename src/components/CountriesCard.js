@@ -24,7 +24,7 @@ export default function CountriesCard(props) {
                 {countryName}
               </CardTitle>
               <CardText style={{ marginBottom: 0 }}>
-                <span style={{ fontWeight: 'bold' }}>Population :</span> {countryPopulation.toLocaleString("en-IN")}
+                <span style={{ fontWeight: 'bold' }}>Population :</span> {countryPopulation.toLocaleString("en-US")}
               </CardText>
               <CardText style={{ marginBottom: 0 }}>
                 <span style={{ fontWeight: 'bold' }}>Region : </span>{countryRegion}

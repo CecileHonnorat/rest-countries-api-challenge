@@ -5,6 +5,10 @@ import { faMoon } from '@fortawesome/free-solid-svg-icons';
 
 export default function Header() {
 
+    var hand = {
+        cursor: "pointer"
+      }
+
     return (
         <Container className="header" fluid>
             <Row>
@@ -14,11 +18,14 @@ export default function Header() {
                 <Col className='title'>
                     <h4 style={{fontWeight:800}}>Where in the world?</h4>
                 </Col>
-                <Col className="mode">
+                <Col className="mode" 
+                onClick={() => console.log("click ok")}
+                >
                     <FontAwesomeIcon
                         icon={faMoon}
+                        {...hand}
                     />
-                    <h6 style={{ marginLeft: '10px', fontWeight:600 }}>Dark Mode</h6>
+                    <h6 style={{ marginLeft: '10px', fontWeight:600 }} {...hand}>Dark Mode</h6>
                 </Col>
             </Navbar>
             </Row>

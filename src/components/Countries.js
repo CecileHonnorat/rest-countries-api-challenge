@@ -58,8 +58,14 @@ export default function Countries() {
      }
 
      if (countrySearch !== ''){
-            filteredCountries = countriesList.filter((country) =>{
-                return country.name.common.includes(countrySearch)
+        filteredCountries = countriesList.filter(e =>{
+                let myRegex = new RegExp(countrySearch, "gi");
+                console.log(myRegex)
+                return (
+                 e.name.common.match(myRegex) || 
+                    e.name.official.match(myRegex) ||
+                    e.altSpellings.match(myRegex)
+                )
          })
      }
 
@@ -130,7 +136,7 @@ console.log(filteredCountries.length)
                         </Dropdown>
                     </Col>
                 </Row>
-                <Row xs="1" lg="2" xl="4" className='countryCards' style={{margin:'25px'}}>
+                <Row xs="1" lg="2" xl="4" className='countryCards' style={{marginLeft:'25px', marginRight:'25px'}}>
                     {countries}
                 </Row>
         </Container>
