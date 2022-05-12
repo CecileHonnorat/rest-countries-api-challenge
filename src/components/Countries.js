@@ -62,9 +62,7 @@ export default function Countries() {
                 let myRegex = new RegExp(countrySearch, "gi");
                 console.log(myRegex)
                 return (
-                 e.name.common.match(myRegex) || 
-                    e.name.official.match(myRegex) ||
-                    e.altSpellings.match(myRegex)
+                 e.name.match(myRegex)
                 )
          })
      }

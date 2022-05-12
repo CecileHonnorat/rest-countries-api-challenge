@@ -1,6 +1,16 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&family=Open+Sans&display=swap');
 
+.white-content {
+  color: "hsl(200, 15%, 8%)";
+  background-color : "hsl(0, 0%, 98%)";
+}
+
+.dark-content {
+  color: "hsl(0, 0%, 100%)";
+  background-color: "hsl(207, 26%, 17%)";
+}
+
 .header{
   display: flex;
   background-color: white;
@@ -15,6 +25,7 @@
   font-family: "Nunito Sans", sans-serif;
   font-weight: "ExtraBold 800";
 }
+
 .mode {
   width: 100%;
   display: flex;
