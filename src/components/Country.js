@@ -1,6 +1,6 @@
 import React from "react";
 import '../App.css';
-import { Button, Container, Col, Row, List } from "reactstrap";
+import { Button, Container, Col, Row, List, Spinner } from "reactstrap";
 import { useEffect, useState } from 'react';
 import Header from "./Header";
 import { useParams, useNavigate, Link } from "react-router-dom";
@@ -57,7 +57,14 @@ export default function Country(props) {
     }, [param.name]);
 
     let displayInfo;
-    if (dataLoaded === true) {
+    if (dataLoaded !== true) {
+                displayInfo =
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Spinner>
+                        Loading...
+                    </Spinner>
+                </div>            
+        } else {
         displayInfo = (
             <div >
                 <Row className='CountryInfo'>
@@ -102,7 +109,7 @@ export default function Country(props) {
                             {borders.map((border, i) => (
                                 <Link to={`/country-info/${border}`} key={border}>
                                     <Button outline size="sm"
-                                    style={{fontWeight:600, margin:3}}>
+                                    style={{fontWeight:600, margin:3, color: (darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)")}}>
                                         {border}
                                     </Button>
                                 </Link>
