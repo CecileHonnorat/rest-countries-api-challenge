@@ -1,19 +1,26 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Col, Card, CardBody, CardTitle, CardText, CardImg } from 'reactstrap';
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 export default function CountriesCard(props) {
+
 
   var countryName = props.countryName;
   var countryPopulation = props.countryPopulation;
   var countryFlag = props.countryFlag;
   var countryRegion = props.countryRegion
   var countryCapital = props.countryCapital
+
+  const darkMode = useSelector(state => state.selectedMode)
+
   return (
       <Col style={{display:'flex', justifyContent:'center'}}>
         <Link to={`/country-info/${countryName}`} key={countryName}
-          style={{ color: 'black', textDecoration: "none" }}>
-          <Card style={{ margin: '0.5rem', width:'80%', display:'flex' }}>
+          style={{ textDecoration: "none" }}>
+          <Card style={{ margin: '0.5rem', width:'80%', display:'flex', 
+          backgroundColor: (darkMode ? 'hsl(209, 23%, 22%)' :  "hsl(0, 0%, 100%)"), 
+          color:(darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)")}}>
             <CardImg
               alt="country's flag"
               src={countryFlag}

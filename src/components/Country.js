@@ -7,13 +7,18 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
+import { useSelector } from "react-redux";
+
 export default function Country(props) {
 
+    const darkMode = useSelector(state => state.selectedMode)
+
     var background = {
-        backgroundColor: 'hsl(0, 0%, 98%)',
+        backgroundColor: (darkMode ? "hsl(207, 26%, 17%)" : "hsl(0, 0%, 98%)"),
         width: '100vw',
         height: '100vh',
-        paddingTop: '50px'
+        paddingTop: '50px',
+        color: (darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)")
     }
 
     const [countryInfo, setCountryInfo] = useState({});
@@ -21,7 +26,6 @@ export default function Country(props) {
     const [borders, setBorders] = useState([]);
 
    let param = useParams();
-    console.log(param)
 
     // Go Back Button
     let navigate = useNavigate();
@@ -52,8 +56,6 @@ export default function Country(props) {
         loadData();
     }, [param.name]);
 
-    console.log(countryInfo)
-    console.log(borders)
     let displayInfo;
     if (dataLoaded === true) {
         displayInfo = (
@@ -113,18 +115,17 @@ export default function Country(props) {
         )
     }
 
-    console.log(countryInfo)
     return (
         <Container fluid style={background}>
             < Header />
             <div className='content' >
-                <Row style={{ margin: 125 }}>
-                    <Col className="backButton" md='2'>
-                        <FontAwesomeIcon icon={faArrowLeft} />
+                <Row style={{ margin: 55 }}>
+                    <Col className="backButton" md='2' style={{backgroundColor: darkMode ? 'hsl(209, 23%, 22%)' :  "hsl(0, 0%, 100%)"}}>
+                        <FontAwesomeIcon icon={faArrowLeft} color={darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)"}/>
                         <Button
                             color="white"
                             onClick={routeChange}
-                            style={{border:'none', width:'100%'}}
+                            style={{border:'none', width:'100%', color:(darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)")}}
                         >
                             Back
                         </Button>

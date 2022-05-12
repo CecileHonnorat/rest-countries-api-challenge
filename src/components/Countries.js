@@ -7,12 +7,17 @@ import { useEffect, useState } from 'react';
 import CountriesCard from './CountriesCard';
 import Header from './Header';
 
+import { useSelector } from 'react-redux';
+
 export default function Countries() {
 
+    const darkMode = useSelector(state => state.selectedMode)
+
     var background = {
-        backgroundColor: 'hsl(0, 0%, 98%)',
+        backgroundColor: (darkMode ? "hsl(207, 26%, 17%)" : "hsl(0, 0%, 98%)"),
         width: '100vw',
-        paddingTop: '50px'
+        paddingTop: '50px',
+        color: (darkMode ? 'hsl(200, 15%, 8%)' :  "hsl(0, 0%, 100%)")
     }
 
     const [countriesList, setCountriesList] = useState([]);
@@ -61,13 +66,12 @@ export default function Countries() {
         filteredCountries = countriesList.filter(e =>{
                 let myRegex = new RegExp(countrySearch, "gi");
                 console.log(myRegex)
+                console.log(e.name)
                 return (
                  e.name.match(myRegex)
                 )
          })
      }
-
-console.log(countrySearch)
 console.log(filteredCountries.length)
 
     // Display Countries' Info
@@ -86,33 +90,35 @@ console.log(filteredCountries.length)
         setDropdownOpen(!dropdownOpen)
     }
  
-    console.log(countrySearch)
     return (
         <Container fluid={true} style={background}>
             < Header />
                 <Row style={{ marginTop: 55 }}>
                     <Col className='search' 
                         sm="4"
-                        xs="10">
-                        <FontAwesomeIcon icon={faMagnifyingGlass} color='grey' />
+                        xs="10"
+                        style={{backgroundColor: darkMode ? 'hsl(209, 23%, 22%)' :  "hsl(0, 0%, 100%)"}}>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} color={darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)"} />
                         <Input
                             type="search"
                             placeholder='Search for a country...'
                             onChange={searchActive}
                             value={countrySearch}
-                            style={{border: 'none', outline: 'none', width:'100%'}}
+                            style={{border: 'none', width:'100%', backgroundColor:(darkMode ? 'hsl(209, 23%, 22%)' :  "hsl(0, 0%, 100%)")}}
                         />
                     </Col>
                     <Col className='filter'
                     md={{size:2, offset:5}}
                     sm={{size:2, offset:8}}
-                    xs="7">
+                    xs="7"
+                    style={{backgroundColor: darkMode ? 'hsl(209, 23%, 22%)' :  "hsl(0, 0%, 100%)"}}>
                         <Dropdown isOpen={dropdownOpen} toggle={toggle} >
-                            <DropdownToggle caret color='white' style={{border: 'none', width:'100%'}}>
+                            <DropdownToggle caret color={darkMode ? 'hsl(209, 23%, 22%)' :  "hsl(0, 0%, 100%)"} 
+                            style={{border: 'none', width:'100%', color:(darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)")}}>
                                 Filter by Region
                             </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem onClick={() => setRegion("Africa")}> 
+                            <DropdownMenu style={{backgroundColor: darkMode ? 'hsl(209, 23%, 22%)' :  "hsl(0, 0%, 100%)"}}>
+                                <DropdownItem onClick={() => setRegion("Africa")} > 
                                     Africa
                                 </DropdownItem>
                                 <DropdownItem onClick={() => setRegion("America")}>
