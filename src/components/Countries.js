@@ -152,7 +152,7 @@ export default function Countries() {
                     </Dropdown>
                 </Col>
             </Row>
-            <Row xs="1" lg="2" xl="4" className='countryCards' style={{ marginLeft: '25px', marginRight: '25px' }}>
+            <Row xs="1" lg="2" xl="4" className='countryCards'>
                 {countries}
                 {loadingText}
             </Row>
