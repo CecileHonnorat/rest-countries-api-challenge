@@ -122,8 +122,8 @@ export default function Countries() {
                 <Col className='filter'
                     md={{ size: 2, offset: 5 }}
                     sm={{ size: 2, offset: 8 }}
-                    xs="7"
-                    style={{ backgroundColor: darkMode ? 'hsl(209, 23%, 22%)' : "hsl(0, 0%, 100%)" }}>
+                    xs="10"
+                    style={{backgroundColor: darkMode ? 'hsl(209, 23%, 22%)' : "hsl(0, 0%, 100%)" }}>
                     <Dropdown isOpen={dropdownOpen} toggle={toggle} >
                         <DropdownToggle caret color={darkMode ? 'hsl(209, 23%, 22%)' : "hsl(0, 0%, 100%)"}
                             style={{ border: 'none', width: '100%', color: (darkMode ? 'hsl(0, 0%, 100%)' : "hsl(200, 15%, 8%)") }}>
@@ -152,7 +152,7 @@ export default function Countries() {
                     </Dropdown>
                 </Col>
             </Row>
-            <Row xs="1" lg="2" xl="4" className='countryCards'>
+            <Row className='countryCards'>
                 {countries}
                 {loadingText}
             </Row>
