@@ -15,8 +15,7 @@ export default function Country(props) {
 
     var background = {
         backgroundColor: (darkMode ? "hsl(207, 26%, 17%)" : "hsl(0, 0%, 98%)"),
-        width: '100vw',
-        height: '100vh',
+        minHeight:'100vh',
         paddingTop: '50px',
         color: (darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)")
     }

@@ -12,27 +12,28 @@ export default function CountriesCard(props) {
   var countryRegion = props.countryRegion
   var countryCapital = props.countryCapital
 
-  if (countryName.length > 19){
-    countryName = countryName.substr(0,18)+'...'
+  if (countryName.length > 18){
+    countryName = countryName.substr(0,17)+'...'
   }
   const darkMode = useSelector(state => state.selectedMode)
 
   return (
-      <Col style={{display:'flex', justifyContent:'center'}}>
+      <Col sm="8" lg="4" xl="3" style={{ position:'relative', padding:12}}>
         <Link to={`/country-info/${countryName}`} key={countryName}
           style={{ textDecoration: "none" }}>
-          <Card style={{ margin: '0.25rem', width:'40vh', display:'flex', 
+          <Card style={{ margin: '2.25rem',  display:'flex', position:'relative',
           backgroundColor: (darkMode ? 'hsl(209, 23%, 22%)' :  "hsl(0, 0%, 100%)"), 
           color:(darkMode ? 'hsl(0, 0%, 100%)' :  "hsl(200, 15%, 8%)")}}>
             <CardImg
               alt="country's flag"
               src={countryFlag}
-              style={{width: '100%',
-                height: '20vh',
-                objectFit: 'cover'}}
+              style={{
+                width:'100%',
+                height:'20vh',
+                objectFit: 'fill'}}
             />
-            <CardBody style={{ textAlign: 'left', marginInline: '0.25rem', width:'40vh', }}>
-              <CardTitle tag="h3" style={{ marginBottom: 20, marginTop: 20, fontWeight:600 }}>
+            <CardBody style={{ textAlign: 'left', marginLeft: '0.45rem', height:'30vh', }}>
+              <CardTitle tag="h3" style={{ marginBottom: 20, marginTop: 20, marginRight:20, fontWeight:600, fontSize:26 }}>
                 {countryName}
               </CardTitle>
               <CardText style={{ marginBottom: 0 }}>
