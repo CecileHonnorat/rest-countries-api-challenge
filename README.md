@@ -51,4 +51,5 @@ Users should be able to:
 
 ### Continued development
 
-Still working on it ! 
+Work on the responsive to make it look better ! 
+Add some features !
