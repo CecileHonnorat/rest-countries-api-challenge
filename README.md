@@ -53,3 +53,4 @@ Users should be able to:
 
 Work on the responsive to make it look better ! 
 Add some features !
+Fix some bugs with the dark mode
